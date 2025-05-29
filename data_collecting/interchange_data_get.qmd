@@ -1,0 +1,50 @@
+---
+title: "Interchange_Code"
+format: html
+editor: visual
+---
+
+```{r}
+library(tidyverse)
+library(janitor)
+library(plotly)
+p1 <- read_csv("EIA930_INTERCHANGE_2024_Jan_Jun.csv")
+p2 <- read_csv("EIA930_INTERCHANGE_2024_Jul_Dec.csv")
+
+merged <- rbind(p1, p2)
+```
+
+```{r}
+merged <- merged |> 
+  clean_names() |> 
+  filter(balancing_authority == "CISO") |> 
+  mutate(local_datetime = parse_date_time(local_time_at_end_of_hour,
+                                          orders = c("%m/%d/%Y %H:%M:%S %p")))
+
+write.csv(merged, "merged_interchange_data_2024.csv")
+
+
+merged |> 
+  group_by(m = paste0(month(local_datetime), hour_number)) |> 
+  summarize(a = sum(interchange_mw, na.rm = TRUE)) |> 
+  ggplot(aes(x = hour_number, y = a)) +
+  geom_line()
+```
+
+
+```{r}
+ggplotly(merged |> 
+  ggplot(aes(x = local_datetime, y = interchange_mw)) +
+  geom_line() +
+  geom_smooth(color = "purple") +
+  theme_classic())
+```
+```{r}
+ggplotly(merged |> 
+  group_by(a = date(local_datetime)) |> 
+  summarize(sum = sum(interchange_mw)) |> 
+  ggplot(aes(x = a, y = sum)) +
+  geom_line() +
+  geom_smooth(color = "purple") +
+  theme_classic())
+```
