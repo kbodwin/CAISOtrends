@@ -1,5 +1,5 @@
 Data:
-- Interchange data was retrieved from EIA
+- Interchange data was retrieved from [EIA](https://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/balancing_authority/CISO)
 - DAM/RTM data was retrieved from [OASIS](https://oasis.caiso.com/mrioasis/logon.do)
 - Outage data was manually merged from [CAISO](https://www.caiso.com/library/curtailed-and-non-operational-generator-reports)
 - Power Plant Locations from [CEC](https://cecgis-caenergy.opendata.arcgis.com/datasets/california-power-plants/explore?filters=eyJSZXRpcmVkX1BsYW50IjpbMCwwXX0%3D&location=37.106048%2C-116.331096%2C6.80)
