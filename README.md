@@ -6,4 +6,4 @@
 - Weather Data from [FastHerbie](https://herbie.readthedocs.io/en/stable/user_guide/tutorial/fast.html) and [Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api?start_date=2024-02-02&end_date=2024-02-02&latitude=35.2956286090001&temperature_unit=fahrenheit&longitude=-119.592197855#hourly_weather_variables)
 
 
-**Data is currently available pre-loaded for the 2024 calendar year.  To incorporate data for other years, reference [thing]**
+**Data is currently available pre-loaded for the 2024 calendar year.  To incorporate data for other years, reference [doc]**
