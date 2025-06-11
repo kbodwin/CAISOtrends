@@ -1,9 +1,85 @@
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+# CAISOtrends
+
+<!-- badges: start -->
+
+[![Lifecycle:
+experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://lifecycle.r-lib.org/articles/stages.html#experimental)
+[![CRAN
+status](https://www.r-pkg.org/badges/version/CAISOtrends)](https://CRAN.R-project.org/package=CAISOtrends)
+<!-- badges: end -->
+
+The goal of CAISOtrends is to nicely wrap some functions for exploring
+trends in the CAISO energy trading network.
+
+## Installation
+
+You can install the development version of CAISOtrends from
+[GitHub](https://github.com/) with:
+
+``` r
+# install.packages("pak")
+pak::pak("kbodwin/CAISOtrends")
+```
+
+## Example
+
+For example, you can plot the real-time and day-ahead market rates of
+electricity in CAISO over a specified time period.
+
+``` r
+library(CAISOtrends)
+#> Warning: replacing previous import 'ggplot2::last_plot' by 'plotly::last_plot'
+#> when loading 'CAISOtrends'
+
+plot_rtm(
+  start_date = "2024-01-01",
+  end_date = "2024-02-01",
+  interactive = FALSE
+  )
+```
+
+<img src="man/figures/README-example-1.png" width="100%" />
+
 ## Data Sources:
-- Interchange data was retrieved from [EIA](https://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/balancing_authority/CISO)
-- DAM/RTM data was retrieved from [OASIS](https://oasis.caiso.com/mrioasis/logon.do)
-- Outage data was manually merged from [CAISO](https://www.caiso.com/library/curtailed-and-non-operational-generator-reports)
-- Power Plant Locations from [CEC](https://cecgis-caenergy.opendata.arcgis.com/datasets/california-power-plants/explore?filters=eyJSZXRpcmVkX1BsYW50IjpbMCwwXX0%3D&location=37.106048%2C-116.331096%2C6.80)
-- Weather Data from [FastHerbie](https://herbie.readthedocs.io/en/stable/user_guide/tutorial/fast.html) and [Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api?start_date=2024-02-02&end_date=2024-02-02&latitude=35.2956286090001&temperature_unit=fahrenheit&longitude=-119.592197855#hourly_weather_variables)
 
+**Data is currently available pre-loaded for the 2024 calendar year,
+except for the large weather dataset, which can be loaded with
+`load_weather_data()`**
 
-**Data is currently available pre-loaded for the 2024 calendar year.  To incorporate data for other years, reference [doc]**
+Supporting functions to collect and process data can be found
+[here](https://github.com/TheAllenChoi/energy_shenanigans/tree/main/data_collecting).
+
+Full data used is on
+[Kaggle](https://www.kaggle.com/datasets/allenychoi/energy-market-data)
+
+#### Data Sources:
+
+- Interchange data was retrieved from
+  [EIA](https://www.eia.gov/electricity/gridmonitor/dashboard/electric_overview/balancing_authority/CISO).
+  Both halves of 2024 were downloaded from the EIA and merged using the
+  `interchange_data_set.qmd` script.
+
+- DAM/RTM data was retrieved from
+  [OASIS](https://oasis.caiso.com/mrioasis/logon.do). Data was
+  downloaded through the OASIS API by running `RTM_AND_DAM_DATA_GET.qmd`
+  script.
+
+- Outage data was from
+  [CAISO](https://www.caiso.com/library/curtailed-and-non-operational-generator-reports).
+  Downloaded all the daily Prior Trade Reports for the targeted time
+  period. Merged into a single CSV file using `combineOutages.py`
+  script, which assumes a directory for each month.
+
+- Power Plant Locations from
+  [CEC](https://cecgis-caenergy.opendata.arcgis.com/datasets/california-power-plants/explore?filters=eyJSZXRpcmVkX1BsYW50IjpbMCwwXX0%3D&location=37.106048%2C-116.331096%2C6.80).
+  Data should be filtered to non-retired power plants. Make sure to
+  click **Toggle Filters** when downloading. Merged with weather data
+  using `getWeather.py` script.
+
+- Weather Data from
+  [FastHerbie](https://herbie.readthedocs.io/en/stable/user_guide/tutorial/fast.html)
+  and
+  [Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api?start_date=2024-02-02&end_date=2024-02-02&latitude=35.2956286090001&temperature_unit=fahrenheit&longitude=-119.592197855#hourly_weather_variables)

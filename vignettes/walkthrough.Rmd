@@ -1,0 +1,111 @@
+---
+title: "walkthrough"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{walkthrough}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, cache = TRUE}
+library(CAISOtrends)
+
+# Weather data does not come pre-loaded due to size
+load_weather_data()
+```
+
+
+
+### plot_rtm
+
+```{r}
+plot_rtm(
+  start_date = "2024-01-01",
+  end_date = "2024-02-01"
+  )
+```
+
+### plot_lmp
+
+```{r}
+plot_lmp(
+  start_date = "2024-01-01",
+  end_date = "2024-02-01"
+  )
+```
+
+### plot_plant_weather
+
+```{r}
+
+
+plot_plant_weather(
+  plant_name = "El Segundo",
+  start_date = "2024-01-01",
+  end_date = "2024-02-01"
+  )
+```
+
+### plot_plant_outage
+
+```{r}
+
+plot_plant_outage(
+  plant_name = "El Segundo",
+  start_date = "2024-01-01",
+  end_date = "2024-02-01"
+  )
+```
+
+### plot_exports
+
+```{r}
+plot_exports(
+  start_date = "2024-01-01", 
+  end_date = "2024-02-01"
+  )
+```
+
+### plot_forced_curtailments
+
+```{r}
+
+plot_forced_curtailments(
+  start_date = "2024-01-01", 
+  end_date = "2024-02-01"
+  )
+```
+
+### plot_all_outages
+
+```{r}
+plot_all_outages(
+  start_date = "2024-01-01", 
+  end_date = "2024-02-01", 
+  percent_cutoff = 50
+  )
+```
+
+### list_days_out
+
+```{r}
+
+list_days_out(
+  start_date = "2024-01-01 00:00:00",
+  end_date = "2024-01-02 23:59:59",
+  reason = NA,
+  percent_min = 0,
+  mw_min = 0,
+  num = 50
+)
+ 
+
+```
+
