@@ -83,3 +83,12 @@ Full data used is on
   [FastHerbie](https://herbie.readthedocs.io/en/stable/user_guide/tutorial/fast.html)
   and
   [Open-Meteo](https://open-meteo.com/en/docs/historical-weather-api?start_date=2024-02-02&end_date=2024-02-02&latitude=35.2956286090001&temperature_unit=fahrenheit&longitude=-119.592197855#hourly_weather_variables)
+
+## Using the package
+
+[This
+flowchart](https://raw.githubusercontent.com/kbodwin/CAISOtrends/refs/heads/main/inst/images/decisions_flowchart.png)
+provides a guide to using the package to investigate anomalies in CAISO
+activity.
+
+![](https://raw.githubusercontent.com/kbodwin/CAISOtrends/refs/heads/main/inst/images/decisions_flowchart.png)
